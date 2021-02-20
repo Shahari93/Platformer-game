@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    public int health = 2;
     public float speed;
     private bool isMovingRight = true;
     public Transform ground;
@@ -26,6 +27,10 @@ public class EnemyPatrol : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 isMovingRight = true;
             }
+        }
+        if(health<=0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

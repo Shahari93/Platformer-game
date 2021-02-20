@@ -7,6 +7,8 @@ TagManager:
   - DeathZone
   - Floor
   - Enemy
+  - Key
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Enemy
   - 
   - 
   - 

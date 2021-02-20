@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     public Transform followObject;
     private Vector3 moveTemp;
     public float offsetX = 2;
+    public float offsetY = 0;
 
     // Use this for initialization
     void Start()
@@ -19,7 +20,7 @@ public class CameraScript : MonoBehaviour
     {
         moveTemp = followObject.transform.position;
         moveTemp.x += offsetX;
-        moveTemp.y = transform.position.y;
+        moveTemp.y += offsetY;
         moveTemp.z = transform.position.z;
         transform.position = moveTemp;
     }
