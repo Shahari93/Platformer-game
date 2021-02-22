@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 667651862}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1079586834}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FrontCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1295830352}
   - component: {fileID: 1295830353}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696294185}
   - component: {fileID: 1696294186}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BowGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705747345}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705747344}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.209, y: 0, z: 0}
+  m_LocalPosition: {x: 0.558, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295830352}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177185446343139559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1177185446761401172}
   - component: {fileID: 1177185446761401177}
   - component: {fileID: 1117102530}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -465,11 +465,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115276e9fb507804f9cb4f430c5306cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.3
+  bow: {fileID: 1295830351}
   anim: {fileID: 1177185446761401173}
   attackPos: {fileID: 667651862}
-  attackRange: 0.92
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
+  startTimeBtwAttack: 0.3
+  attackRange: 0.92
   damage: 1

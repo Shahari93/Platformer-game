@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float timeBtwAttacks;
-    public float startTimeBtwAttack;
+    [SerializeField] GameObject bow;
     [SerializeField] private Animator anim;
     public Transform attackPos;
-    public float attackRange;
     public LayerMask whatIsEnemy;
+    private float timeBtwAttacks;
+    public float startTimeBtwAttack;
+    public float attackRange;
     public int damage;
+
+
+    private void Start()
+    {
+        bow.SetActive(false);
+    }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            bow.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            bow.SetActive(true);
+        }
+
         if (timeBtwAttacks <= 0)
         {
-            //can attack
-
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) && !bow.gameObject.activeInHierarchy)
             {
-                anim.SetBool("IsAttacking",true);
+                anim.SetBool("IsAttacking", true);
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
