@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRB = null;
     [SerializeField] private SpriteRenderer playerSR = null;
+    [SerializeField] private Animator playerAnimator = null;
 
     private void Update()
     {

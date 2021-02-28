@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &10029606
 MonoBehaviour:
@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 461540075}
   - component: {fileID: 461540076}
   - component: {fileID: 461540077}
+  - component: {fileID: 461540079}
   - component: {fileID: 461540078}
   m_Layer: 0
   m_Name: Player
@@ -366,6 +367,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRB: {fileID: 461540076}
   playerSR: {fileID: 461540075}
+  playerAnimator: {fileID: 461540079}
+--- !u!95 &461540079
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461540073}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c5703c221402c040b7f6ba08d2b89c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &538648481
 GameObject:
   m_ObjectHideFlags: 0
@@ -20035,5 +20056,5 @@ Transform:
   - {fileID: 919615776}
   - {fileID: 538648482}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
