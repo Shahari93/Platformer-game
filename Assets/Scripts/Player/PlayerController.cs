@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask ground = 0;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
+    public int cherries = 0;
 
     //FSM
     private enum State { idle, running, jumping, fall }
@@ -80,6 +81,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             state = State.idle;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Collectible"))
+        {
+            cherries++;
+            Destroy(collision.gameObject);
         }
     }
 }

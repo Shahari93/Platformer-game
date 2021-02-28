@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Key
   - Coin
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1123252233
+    locked: 0
+  - name: Collectibles
+    uniqueID: 2941300447
     locked: 0
   - name: Entity
     uniqueID: 3922391227
