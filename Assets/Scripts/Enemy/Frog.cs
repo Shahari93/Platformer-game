@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Frog : MonoBehaviour
+public class Frog : Enemy
 {
     [Header("Jump Variables")]
     [SerializeField] private float leftCap = 0f;
@@ -10,16 +10,35 @@ public class Frog : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private bool facingLeft = true;
     private Collider2D frogColl;
-    private Rigidbody2D frogRB;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         frogColl = GetComponent<Collider2D>();
-        frogRB = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
+    {
+        if (frogAnim.GetBool("IsJumping"))
+        {
+            if (enemyRB.velocity.y < .1f)
+            {
+                frogAnim.SetBool("IsFalling", true);
+                frogAnim.SetBool("IsJumping", false);
+            }
+        }
+
+        if (frogAnim.GetBool("IsFalling"))
+        {
+            if (frogColl.IsTouchingLayers(ground))
+            {
+                frogAnim.SetBool("IsFalling", false);
+            }
+        }
+    }
+
+    private void FrogMovement()
     {
         if (facingLeft)
         {
@@ -34,7 +53,8 @@ public class Frog : MonoBehaviour
                 //test to see if the frog is on the ground, we can jump
                 if (frogColl.IsTouchingLayers(ground))
                 {
-                    frogRB.velocity = new Vector2(-jumpLength, jumpHeight);
+                    enemyRB.velocity = new Vector2(-jumpLength, jumpHeight);
+                    frogAnim.SetBool("IsJumping", true);
                 }
             }
 
@@ -58,7 +78,8 @@ public class Frog : MonoBehaviour
                 //test to see if the frog is on the ground, we can jump
                 if (frogColl.IsTouchingLayers(ground))
                 {
-                    frogRB.velocity = new Vector2(jumpLength, jumpHeight);
+                    enemyRB.velocity = new Vector2(jumpLength, jumpHeight);
+                    frogAnim.SetBool("IsJumping", true);
                 }
             }
 

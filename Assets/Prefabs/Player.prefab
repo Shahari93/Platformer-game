@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5916708408562440647}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,11 +164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc0b956c4b6d1a4f8dc073c790de5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseColl: {fileID: 0}
   cherries: 0
   ground:
     serializedVersion: 2
     m_Bits: 256
   moveSpeed: 5.5
   jumpForce: 8.5
-  hurtForce: 7.5
+  hurtForce: 3.5
   scoreText: {fileID: 0}
+  jumpAmount: 0
+  extraJumpAmount: 2
+  spawnPos: {fileID: 0}
+  shrooms: {fileID: 0}

@@ -10,12 +10,17 @@ public class PlayerController : MonoBehaviour
     private Collider2D playerColl = null;
 
     [Header("Variables")]
+    [SerializeField]private Collider2D houseColl = null;
     [SerializeField] private int cherries = 0;
     [SerializeField] private LayerMask ground = 0;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] private float hurtForce = 10f;
     [SerializeField] private Text scoreText;
+    [SerializeField] private int jumpAmount = 0;
+    [SerializeField] private int extraJumpAmount = 1;
+    [SerializeField] private Transform spawnPos;
+    [SerializeField] protected Image shrooms;
 
     //FSM
     private enum State { idle, running, jumping, fall, hurt }
@@ -55,16 +60,21 @@ public class PlayerController : MonoBehaviour
             playerSR.flipX = false;
 
         }
-        if (Input.GetButtonDown("Jump") && playerColl.IsTouchingLayers(ground))
+
+        if (Input.GetButtonDown("Jump"))
         {
             Jump();
         }
-    }
 
+    }
     private void Jump()
     {
-        playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
-        state = State.jumping;
+        if (jumpAmount < extraJumpAmount)
+        {
+            jumpAmount++;
+            playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
+            state = State.jumping;
+        }
     }
 
     private void AnimationSwitchStates()
@@ -81,6 +91,7 @@ public class PlayerController : MonoBehaviour
             if (playerColl.IsTouchingLayers(ground))
             {
                 state = State.idle;
+                jumpAmount = 0;
             }
         }
         else if (state == State.hurt)
@@ -108,14 +119,27 @@ public class PlayerController : MonoBehaviour
             scoreText.text = cherries.ToString();
             Destroy(collision.gameObject);
         }
+        if(collision.gameObject.CompareTag("DeathZone"))
+        {
+            this.transform.position = spawnPos.position;
+        }
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            Destroy(collision.gameObject);
+            Color c = shrooms.color;
+            c.a = 255f;
+            shrooms.color = c;
+            houseColl.isTrigger = true;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (state == State.fall)
             {
-                Destroy(collision.gameObject);
+                enemy.JumpedOn();
                 Jump();
             }
             else
