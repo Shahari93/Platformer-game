@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5614749117323604363}
   - component: {fileID: 7934699603292632396}
   - component: {fileID: 1967756560}
+  - component: {fileID: 1102659183268882307}
   m_Layer: 0
   m_Name: Frog Enemy
   m_TagString: Enemy
@@ -151,3 +152,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1102659183268882307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614749117323604372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e05862c27d7454dadb2badfa9f2ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCap: 16.73
+  rightCap: 27.03
+  jumpLength: 10
+  jumpHeight: 15
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
