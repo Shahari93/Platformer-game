@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private int jumpAmount = 0;
     [SerializeField] private int extraJumpAmount = 1;
-    [SerializeField] private Transform spawnPos;
     [SerializeField] protected Image shrooms;
 
     //FSM
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("DeathZone"))
         {
-            this.transform.position = spawnPos.position;
+            SceneManager.LoadScene("Level1");
         }
         if (collision.gameObject.CompareTag("Key"))
         {
