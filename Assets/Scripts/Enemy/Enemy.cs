@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
         frogAnim.SetTrigger("IsDead");
         deathSFX.Play();
         enemyRB.velocity = Vector2.zero;
+        enemyRB.bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<Collider2D>().enabled = false;
     }
     private void Death()
     {

@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Image shrooms;
     [SerializeField] private AudioSource cherry;
     [SerializeField] private AudioSource footStep = null;
+    [SerializeField] private int healthAmount;
+    [SerializeField] private Text healthText;
 
     //FSM
     private enum State { idle, running, jumping, fall, hurt }
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         playerSR = GetComponent<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
         playerColl = GetComponent<Collider2D>();
+        healthText.text = healthAmount.ToString();
     }
 
     private void Update()
@@ -128,7 +131,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("DeathZone"))
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (collision.gameObject.CompareTag("Key"))
         {
@@ -153,6 +156,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 state = State.hurt;
+                HandleHealth();
                 if (collision.gameObject.transform.position.x > this.transform.position.x)
                 {
                     playerRB.velocity = new Vector2(-hurtForce, playerRB.velocity.y);
@@ -162,6 +166,16 @@ public class PlayerController : MonoBehaviour
                     playerRB.velocity = new Vector2(hurtForce, playerRB.velocity.y);
                 }
             }
+        }
+    }
+
+    private void HandleHealth()
+    {
+        healthAmount--;
+        healthText.text = healthAmount.ToString();
+        if (healthAmount <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
