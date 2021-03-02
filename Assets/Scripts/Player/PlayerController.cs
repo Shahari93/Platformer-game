@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D playerColl = null;
 
     [Header("Variables")]
-    [SerializeField]private Collider2D houseColl = null;
+    [SerializeField] private Collider2D houseColl = null;
     [SerializeField] private int cherries = 0;
     [SerializeField] private LayerMask ground = 0;
     [SerializeField] float moveSpeed = 5f;
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int jumpAmount = 0;
     [SerializeField] private int extraJumpAmount = 1;
     [SerializeField] protected Image shrooms;
+    [SerializeField] private AudioSource cherry;
+    [SerializeField] private AudioSource footStep = null;
 
     //FSM
     private enum State { idle, running, jumping, fall, hurt }
@@ -76,6 +78,10 @@ public class PlayerController : MonoBehaviour
             state = State.jumping;
         }
     }
+    private void FootSteps()
+    {
+        footStep.Play();
+    }
 
     private void AnimationSwitchStates()
     {
@@ -117,14 +123,16 @@ public class PlayerController : MonoBehaviour
         {
             cherries++;
             scoreText.text = cherries.ToString();
+            cherry.Play();
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.CompareTag("DeathZone"))
+        if (collision.gameObject.CompareTag("DeathZone"))
         {
             SceneManager.LoadScene("Level1");
         }
         if (collision.gameObject.CompareTag("Key"))
         {
+            cherry.Play();
             Destroy(collision.gameObject);
             Color c = shrooms.color;
             c.a = 255f;
